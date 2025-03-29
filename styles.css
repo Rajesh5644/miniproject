@@ -1,0 +1,87 @@
+.class{
+    background-color: white;
+    text-align: center;
+    font-size: 16px;
+}
+.nav-links{
+    display: flex;
+    gap:10px;
+    justify-content: center;
+}
+.b{
+    background-color: rgb(253, 214, 145);
+    width: 10%;
+    height:40px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 10px;
+    border-color: rgb(253, 214, 145);
+}
+.editkaro{
+    justify-content: center;
+    text-align: center;
+}
+body{
+    background-color: rgb(253, 214, 145);
+}
+.btn:hover{
+    background-color: rgb(194, 207, 218);
+}
+.btn{
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+}
+.btns:hover{
+    background-color:rgb(5, 229, 87) ;
+}
+.btns{
+    width:10%;
+    background-color: rgb(8, 85, 237);
+    padding: 10px;
+    border-radius: 10px;
+   text-align: center;
+   font-size: 15px;
+}
+.portfolio{
+    padding:10px;
+    display: flex;
+    gap: 10px;
+}
+.video-card video {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; 
+}
+.video-card:hover{
+    background-color:rgb(253, 214, 145) ;
+}
+.video-card{
+    padding-top: 40px;
+    background-color:antiquewhite;
+    border-radius: 10px;
+    text-align: center;
+}
+.img img {
+    width: 100%; 
+    height: 200px; 
+    border-radius: 10px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.image{
+    padding:10px;
+    display: flex;
+    gap: 10px;
+}
+.img{
+    padding: 10px;
+    text-align: center;
+}
+label{
+    padding: 10px;
+    font-size: 20px;
+}
+input{
+    width: 20%;
+    height: 20px;
+}

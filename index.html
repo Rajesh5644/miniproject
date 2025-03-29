@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Editkaro Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <sec class="editkaro">
+        <h1>Editkaro Portfolio</h1>
+</sec>
+    <nav>
+        <div class="nav-links">
+            <button class="b" data-target="home">Home</button>
+            <button class="b" data-target="about">About</button>
+            <button class="b" data-target="services">Our-Services</button>
+            <button class="b" data-target="portfolio">Portfolio</button>
+            <button class="b" data-target="contact">Contact</button>
+        </div>
+    </nav>
+<sec id="home" class="class">
+<h2>Welcome to Editkaro.in</h2>
+<p>We specialize in social media marketing and professional video editing. Explore our portfolio to see the work we've done for various categories including short-form videos, long-form videos, eCommerce ads, and more!</p>
+</sec>
+<sec id="about" class="class">
+<h2>About Editkaro.in</h2>
+<p>Editkaro.in is a leading social media marketing and video editing agency, specializing in a wide range of video content production. From short-form videos and long-form videos to gaming videos, football edits, eCommerce ads, documentaries, color grading, anime videos, and advertisements—our expert team brings your vision to life with creative precision.
+    Our mission is to provide top-tier video editing services that help businesses and individuals effectively communicate their message across digital platforms.</p>
+</sec>
+<sec id="services" class="class">
+<h2>Our Services</h2>
+<p>
+    <section class="image">
+        <div class="img">
+            <img src="c:\Users\medar\OneDrive\Desktop\Valutofcodes\miniproject\images\videoediting.jpg" alt="videoediting">
+            <p>Video-Editing</p>
+        </div>
+        <div class="img">
+            <img src="c:\Users\medar\OneDrive\Desktop\Valutofcodes\miniproject\images\colourgrading.jpg" alt="colourgrading">
+            <p>Colour-Grading</p>
+        </div>
+        <div class="img">
+            <img src="c:\Users\medar\OneDrive\Desktop\Valutofcodes\miniproject\images\marketing.png" alt="marketing">
+            <p>Social-Media  Marketing</p>
+        </div>
+        <div class="img">
+            <img src="c:\Users\medar\OneDrive\Desktop\Valutofcodes\miniproject\images\animie.jpeg" alt="animie">
+            <p>Anime-Creation</p>
+        </div>
+        <div class="img">
+            <img src="c:\Users\medar\OneDrive\Desktop\Valutofcodes\miniproject\images\add.png" alt="add">
+            <p>Add-Creation</p>
+        </div>
+    </section>
+    </p>
+</sec>
+<sec id="portfolio" class="class">
+<h2>Portfolio</h2>
+<p>
+    <header>
+        <nav>
+        <button class="btn"  data-category="all">All</button>
+        <button class="btn" data-category="short">Short-Form Videos</button>
+        <button class="btn" data-category="long">Long-Form Videos</button>
+        <button class="btn" data-category="game" >Gaming Videos</button>
+        <button class="btn" data-category="Foot">Football Edits</button>
+        <button class="btn" data-category="ecom">eCommerce ads</button>
+        <button class="btn" data-category="doc">Documentary Style</button>
+        <button class="btn" data-category="colour">Colour Grading</button>
+        <button class="btn" data-category="Anime">Anime Videos</button>
+        <button class="btn" data-category="Adds">Adds</button>
+        </nav>
+    </header>
+</p>
+</sec>
+<section class="portfolio">
+    <div class="video-card" data-category="colour">
+        <video src="c:\Users\medar\OneDrive\Desktop\Valutofcodes\miniproject\video\colourgrading.mp4"  controls></video>
+        <h3>Colour-Grading</h3>
+    </div>
+    <div class="video-card" data-category="short">
+        <video src="c:\Users\medar\OneDrive\Desktop\Valutofcodes\miniproject\video\short.mp4" controls></video>
+        <h3>Short-video</h3>
+    </div>
+    <div class="video-card" data-category="game">
+        <video src="c:\Users\medar\OneDrive\Desktop\Valutofcodes\miniproject\video\game.mp4" controls></video>
+        <h3>Gaming Edit</h3>
+    </div>
+    <div class="video-card" data-category="ecom">
+        <video src="c:\Users\medar\OneDrive\Desktop\Valutofcodes\miniproject\video\ecommerce.mp4" controls></video>
+        <h3>E-Commerce Ad</h3>
+    </div>
+    <div class="video-card" data-category="animie">
+        <video src="c:\Users\medar\OneDrive\Desktop\Valutofcodes\miniproject\video\animie.mp4" controls></video>
+        <h3>Anime-Creation</h3>
+    </div>
+</section>
+<sec id="contact" class="class">
+    <h2>Contact</h2>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <br><br>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50"></textarea>
+        <br><br>
+        <button class="btns">SUBMIT</button>
+    </form>
+    </sec>
+<script src="script.js"></script>
+</body>
+</html>
