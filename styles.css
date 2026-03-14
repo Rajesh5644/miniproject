@@ -1,87 +1,234 @@
-.class{
-    background-color: white;
+/* NAVBAR */
+
+.class {
+    background: whitesmoke;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
+    padding: 18px 0;
+    color: rgb(18, 1, 1);
+    font-weight: 600;
 }
-.nav-links{
+
+/* NAV LINKS */
+
+.nav-links {
     display: flex;
-    gap:10px;
+    gap: 35px;
     justify-content: center;
+    align-items: center;
+    padding: 10px 0;
 }
-.b{
-    background-color: rgb(253, 214, 145);
-    width: 10%;
-    height:40px;
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffe7d6;
+}
+
+/* NAV BUTTON */
+
+.b {
+    background: #ffffff;
+    width: 130px;
+    height: 40px;
     text-align: center;
     font-size: 15px;
-    border-radius: 10px;
-    border-color: rgb(253, 214, 145);
+    border-radius: 8px;
+    border: none;
+    color: #ea580c;
+    cursor: pointer;
+    transition: 0.3s;
 }
-.editkaro{
+
+.b:hover {
+    background: #fff7ed;
+}
+
+/* BODY */
+
+body {
+    background: #fde7d8;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+}
+
+/* HERO */
+
+.editkaro {
+    text-align: center;
+    padding: 70px 20px;
+    background: linear-gradient(135deg, #fb923c, #ea580c);
+    color: rgb(17, 1, 1);
+}
+
+.editkaro h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.editkaro p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* BUTTON */
+
+.btn {
+    background: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.btn:hover {
+    background: #ffe7d6;
+}
+
+/* PRIMARY BUTTON */
+
+.btns {
+    width: 150px;
+    background: #ea580c;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 15px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btns:hover {
+    background: #c2410c;
+}
+
+/* PORTFOLIO SECTION */
+
+.portfolio {
+    padding: 50px;
+    display: flex;
+    gap: 30px;
     justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* VIDEO CARD */
+
+.video-card {
+    background: white;
+    border-radius: 14px;
+    padding: 15px;
+    width: 270px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
     text-align: center;
 }
-body{
-    background-color: rgb(253, 214, 145);
+
+.video-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
 }
-.btn:hover{
-    background-color: rgb(194, 207, 218);
-}
-.btn{
-    background-color: rgb(255, 255, 255);
-    padding: 10px;
-    border-radius: 5px;
-}
-.btns:hover{
-    background-color:rgb(5, 229, 87) ;
-}
-.btns{
-    width:10%;
-    background-color: rgb(8, 85, 237);
-    padding: 10px;
-    border-radius: 10px;
-   text-align: center;
-   font-size: 15px;
-}
-.portfolio{
-    padding:10px;
-    display: flex;
-    gap: 10px;
-}
+
 .video-card video {
     width: 100%;
     height: 200px;
-    object-fit: cover; 
-}
-.video-card:hover{
-    background-color:rgb(253, 214, 145) ;
-}
-.video-card{
-    padding-top: 40px;
-    background-color:antiquewhite;
+    object-fit: cover;
     border-radius: 10px;
-    text-align: center;
 }
-.img img {
-    width: 100%; 
-    height: 200px; 
-    border-radius: 10px; 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+.video-card h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #9a3412;
 }
-.image{
-    padding:10px;
+
+/* IMAGE SECTION */
+
+.image {
+    padding: 50px;
     display: flex;
-    gap: 10px;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
-.img{
+
+.img {
     padding: 10px;
     text-align: center;
+    width: 270px;
 }
-label{
-    padding: 10px;
-    font-size: 20px;
+
+.img img {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: 0.3s;
 }
-input{
-    width: 20%;
-    height: 20px;
+
+.img img:hover {
+    transform: scale(1.06);
+}
+
+/* CONTACT FORM */
+
+form {
+    background: white;
+    padding: 35px;
+    border-radius: 14px;
+    width: 350px;
+    margin: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    padding: 6px;
+    font-size: 16px;
+    display: block;
+    color: #9a3412;
+}
+
+input {
+    width: 100%;
+    height: 40px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #fdba74;
+    margin-bottom: 15px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #ea580c;
+    box-shadow: 0 0 5px rgba(234, 88, 12, 0.3);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px) {
+
+    .portfolio {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form {
+        width: 90%;
+    }
+
 }
