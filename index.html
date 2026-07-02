@@ -1,114 +1,794 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Editkaro Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editkaro — Video Editing &amp; Social Media Marketing</title>
+    <meta name="description" content="Editkaro.in is a video editing and social media marketing agency crafting short-form, long-form, gaming, eCommerce, anime, and documentary-style content.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+/* ==========================================================================
+   Editkaro — Design tokens
+   Palette drawn from film colour-grading: teal shadows / orange highlights
+   ========================================================================== */
+:root {
+    --ink: #0E0F12;
+    --panel: #16181D;
+    --panel-raised: #1D2027;
+    --line: #2A2D34;
+    --paper: #F2F0EB;
+    --muted: #8A8D93;
+    --orange: #FF6B35;
+    --orange-dim: #C9501F;
+    --teal: #00C2B2;
+    --teal-dim: #048A80;
+
+    --font-display: "Anton", "Arial Narrow", sans-serif;
+    --font-body: "Space Grotesk", "Segoe UI", sans-serif;
+
+    --radius: 10px;
+    --container: 1140px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img, video { max-width: 100%; display: block; }
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+    margin: 0 0 0.5em;
+    text-transform: uppercase;
+}
+
+p { margin: 0 0 1em; color: var(--paper); }
+
+a { color: inherit; }
+
+button {
+    font-family: var(--font-body);
+    cursor: pointer;
+}
+
+:focus-visible {
+    outline: 2px solid var(--orange);
+    outline-offset: 3px;
+}
+
+.eyebrow {
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.75rem;
+    color: var(--teal);
+    margin: 0 0 0.75em;
+}
+
+.section {
+    padding: 96px 24px;
+    max-width: var(--container);
+    margin: 0 auto;
+}
+
+.section-head { margin-bottom: 40px; }
+.section-head h2 { font-size: clamp(2rem, 4vw, 2.75rem); }
+
+/* ==========================================================================
+   Header / Nav
+   ========================================================================== */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(14, 15, 18, 0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+}
+
+.navbar {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+}
+
+.brand span { color: var(--orange); }
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-links .b {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 999px;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.nav-links .b:hover { color: var(--paper); }
+
+.nav-links .b.is-active {
+    color: var(--ink);
+    background: var(--teal);
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 6px;
+}
+
+.nav-toggle span {
+    width: 22px;
+    height: 2px;
+    background: var(--paper);
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+    padding-top: 88px;
+    padding-bottom: 64px;
+    text-align: left;
+}
+
+.hero-inner { max-width: 720px; }
+
+.hero-title {
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
+}
+
+.accent-flip {
+    color: var(--orange);
+    -webkit-text-stroke: 1px var(--teal);
+}
+
+.hero-copy {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 560px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    border: none;
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--orange);
+    color: var(--ink);
+}
+
+.btn-primary:hover { background: #ff8259; transform: translateY(-2px); }
+
+.btn-ghost {
+    background: transparent;
+    color: var(--paper);
+    border: 1px solid var(--line);
+}
+
+.btn-ghost:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+
+/* Timeline scrubber — signature element */
+.scrubber {
+    margin-top: 72px;
+    max-width: var(--container);
+}
+
+.scrubber-track {
+    position: relative;
+    height: 6px;
+    background: var(--panel-raised);
+    border-radius: 999px;
+    overflow: visible;
+}
+
+.scrubber-fill {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 38%;
+    background: linear-gradient(90deg, var(--teal), var(--orange));
+    border-radius: 999px;
+}
+
+.scrubber-handle {
+    position: absolute;
+    left: 38%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px; height: 16px;
+    background: var(--paper);
+    border: 3px solid var(--orange);
+    border-radius: 50%;
+}
+
+.scrubber-ticks {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   About
+   ========================================================================== */
+.about { border-top: 1px solid var(--line); }
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.about-copy { color: var(--muted); font-size: 1rem; }
+
+.about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-left: 2px solid var(--line);
+    padding-left: 24px;
+}
+
+.stat-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    color: var(--teal);
+}
+
+.stat-label {
+    display: block;
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* ==========================================================================
+   Services
+   ========================================================================== */
+.services { border-top: 1px solid var(--line); }
+
+.image {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.img {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-align: center;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.img:hover {
+    border-color: var(--orange);
+    transform: translateY(-4px);
+}
+
+.img img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.img p {
+    margin: 0;
+    padding: 14px 10px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--paper);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* ==========================================================================
+   Portfolio
+   ========================================================================== */
+.portfolio { border-top: 1px solid var(--line); }
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.btn-filter {
+    background: var(--panel);
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 9px 16px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-filter:hover { color: var(--paper); border-color: var(--teal); }
+
+.btn-filter.is-active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.video-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.video-card:hover { transform: translateY(-4px); border-color: var(--orange); }
+
+.video-card video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+}
+
+.video-card h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: none;
+    font-size: 1rem;
+    padding: 14px 16px;
+    margin: 0;
+}
+
+.video-card.is-hidden { display: none; }
+
+.empty-state {
+    color: var(--muted);
+    text-align: center;
+    padding: 40px 0 0;
+}
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+.contact { border-top: 1px solid var(--line); }
+
+.contact-form {
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.field { display: flex; flex-direction: column; gap: 8px; }
+
+.field label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+}
+
+.field input,
+.field textarea {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 12px 14px;
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+    border-color: var(--teal);
+    outline: none;
+}
+
+.btns {
+    align-self: flex-start;
+    background: var(--orange);
+    color: var(--ink);
+    border: none;
+    border-radius: 999px;
+    padding: 14px 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.btns:hover { background: #ff8259; transform: translateY(-2px); }
+
+.form-note {
+    color: var(--teal);
+    font-size: 0.88rem;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 24px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 860px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-left: none;
+        border-top: 2px solid var(--line);
+        padding-left: 0;
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 720px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: var(--ink);
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        padding: 12px;
+        display: none;
+    }
+    .nav-links.is-open { display: flex; }
+    .section { padding: 64px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+}
+
+    </style>
 </head>
 <body>
-    <sec class="editkaro">
-        <h1>Editkaro Portfolio</h1>
-</sec>
-    <nav>
-        <div class="nav-links">
-            <button class="b" data-target="home">Home</button>
-            <button class="b" data-target="about">About</button>
-            <button class="b" data-target="services">Our-Services</button>
-            <button class="b" data-target="portfolio">Portfolio</button>
-            <button class="b" data-target="contact">Contact</button>
-        </div>
-    </nav>
-<sec id="home" class="class">
-<h2>Welcome to Editkaro.in</h2>
-<p>We specialize in social media marketing and professional video editing. Explore our portfolio to see the work we've done for various categories including short-form videos, long-form videos, eCommerce ads, and more!</p>
-</sec>
-<sec id="about" class="class">
-<h2>About Editkaro.in</h2>
-<p>Editkaro.in is a leading social media marketing and video editing agency, specializing in a wide range of video content production. From short-form videos and long-form videos to gaming videos, football edits, eCommerce ads, documentaries, color grading, anime videos, and advertisements—our expert team brings your vision to life with creative precision.
-    Our mission is to provide top-tier video editing services that help businesses and individuals effectively communicate their message across digital platforms.</p>
-</sec>
-<sec id="services" class="class">
-<h2>Our Services</h2>
-<p>
-    <section class="image">
-        <div class="img">
-            <img src="videoediting.jpg" alt="videoediting">
-            <p>Video-Editing</p>
-        </div>
-        <div class="img">
-            <img src="colourgrading.jpg" alt="colourgrading">
-            <p>Colour-Grading</p>
-        </div>
-        <div class="img">
-            <img src="marketing.png" alt="marketing">
-            <p>Social-Media  Marketing</p>
-        </div>
-        <div class="img">
-            <img src="animie.jpeg" alt="animie">
-            <p>Anime-Creation</p>
-        </div>
-        <div class="img">
-            <img src="add.png" alt="add">
-            <p>Add-Creation</p>
-        </div>
-    </section>
-    </p>
-</sec>
-<sec id="portfolio" class="class">
-<h2>Portfolio</h2>
-<p>
-    <header>
-        <nav>
-        <button class="btn"  data-category="all">All</button>
-        <button class="btn" data-category="short">Short-Form Videos</button>
-        <button class="btn" data-category="long">Long-Form Videos</button>
-        <button class="btn" data-category="game" >Gaming Videos</button>
-        <button class="btn" data-category="Foot">Football Edits</button>
-        <button class="btn" data-category="ecom">eCommerce ads</button>
-        <button class="btn" data-category="doc">Documentary Style</button>
-        <button class="btn" data-category="colour">Colour Grading</button>
-        <button class="btn" data-category="Anime">Anime Videos</button>
-        <button class="btn" data-category="Adds">Adds</button>
+
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="#home" class="brand">Edit<span>karo</span></a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <button class="b" data-target="home">Home</button>
+                <button class="b" data-target="about">About</button>
+                <button class="b" data-target="services">Our Services</button>
+                <button class="b" data-target="portfolio">Portfolio</button>
+                <button class="b" data-target="contact">Contact</button>
+            </div>
         </nav>
     </header>
-</p>
-</sec>
-<section class="portfolio">
-    <div class="video-card" data-category="colour">
-        <video src="colourgrading.mp4"  controls></video>
-        <h3>Colour-Grading</h3>
-    </div>
-    <div class="video-card" data-category="short">
-        <video src="short1.mp4" controls></video>
-        <h3>Short-video</h3>
-    </div>
-    <div class="video-card" data-category="game">
-        <video src="game.mp4" controls></video>
-        <h3>Gaming Edit</h3>
-    </div>
-    <div class="video-card" data-category="ecom">
-        <video src="ecommerce.mp4" controls></video>
-        <h3>E-Commerce Ad</h3>
-    </div>
-    <div class="video-card" data-category="animie">
-        <video src="animie.mp4" controls></video>
-        <h3>Anime-Creation</h3>
-    </div>
-</section>
-<sec id="contact" class="class">
-    <h2>Contact</h2>
-    <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" required>
-        <br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" required>
-        <br><br>
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" rows="4" cols="50"></textarea>
-        <br><br>
-        <button class="btns">SUBMIT</button>
-    </form>
-    </sec>
-<script src="script.js"></script>
+
+    <main>
+        <!-- HOME / HERO -->
+        <section id="home" class="section hero">
+            <div class="hero-inner">
+                <p class="eyebrow">Video Editing &amp; Social Media Marketing</p>
+                <h1 class="hero-title">We cut stories<br>that <span class="accent-flip">get watched.</span></h1>
+                <p class="hero-copy">
+                    Editkaro.in specializes in social media marketing and professional video editing.
+                    Explore our portfolio to see the work we've done across short-form, long-form,
+                    gaming, football, eCommerce, anime, and documentary-style content.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" data-target="portfolio">View Portfolio</button>
+                    <button class="btn btn-ghost" data-target="contact">Start a Project</button>
+                </div>
+            </div>
+
+            <!-- Timeline scrubber signature element -->
+            <div class="scrubber" aria-hidden="true">
+                <div class="scrubber-track">
+                    <div class="scrubber-fill"></div>
+                    <div class="scrubber-handle"></div>
+                </div>
+                <div class="scrubber-ticks">
+                    <span>00:00</span><span>00:10</span><span>00:20</span><span>00:30</span><span>00:40</span><span>00:50</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="section about">
+            <div class="section-head">
+                <p class="eyebrow">About Editkaro.in</p>
+                <h2>Precision editing, built for platforms.</h2>
+            </div>
+            <div class="about-grid">
+                <p class="about-copy">
+                    Editkaro.in is a leading social media marketing and video editing agency, specializing
+                    in a wide range of video content production. From short-form and long-form videos to
+                    gaming videos, football edits, eCommerce ads, documentaries, colour grading, anime videos,
+                    and advertisements — our expert team brings your vision to life with creative precision.
+                </p>
+                <p class="about-copy">
+                    Our mission is simple: deliver top-tier video editing that helps businesses and individuals
+                    communicate clearly and confidently across every digital platform.
+                </p>
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="stat-number">9+</span>
+                        <span class="stat-label">Content categories</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Platform-ready exports</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Project turnaround support</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section id="services" class="section services">
+            <div class="section-head">
+                <p class="eyebrow">What We Do</p>
+                <h2>Our Services</h2>
+            </div>
+            <div class="image">
+                <div class="img">
+                    <img src="videoediting.jpg" alt="videoediting">
+                    <p>Video Editing</p>
+                </div>
+                <div class="img">
+                    <img src="colourgrading.jpg" alt="colourgrading">
+                    <p>Colour Grading</p>
+                </div>
+                <div class="img">
+                    <img src="marketing.png" alt="marketing">
+                    <p>Social Media Marketing</p>
+                </div>
+                <div class="img">
+                    <img src="animie.jpeg" alt="animie">
+                    <p>Anime Creation</p>
+                </div>
+                <div class="img">
+                    <img src="add.png" alt="add">
+                    <p>Ad Creation</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO -->
+        <section id="portfolio" class="section portfolio">
+            <div class="section-head">
+                <p class="eyebrow">Selected Work</p>
+                <h2>Portfolio</h2>
+            </div>
+
+            <nav class="filter-bar">
+                <button class="btn-filter is-active" data-category="all">All</button>
+                <button class="btn-filter" data-category="short">Short-Form Videos</button>
+                <button class="btn-filter" data-category="long">Long-Form Videos</button>
+                <button class="btn-filter" data-category="game">Gaming Videos</button>
+                <button class="btn-filter" data-category="football">Football Edits</button>
+                <button class="btn-filter" data-category="ecom">eCommerce Ads</button>
+                <button class="btn-filter" data-category="doc">Documentary Style</button>
+                <button class="btn-filter" data-category="colour">Colour Grading</button>
+                <button class="btn-filter" data-category="anime">Anime Videos</button>
+                <button class="btn-filter" data-category="ads">Ads</button>
+            </nav>
+
+            <div class="video-grid">
+                <div class="video-card" data-category="colour">
+                    <video src="colourgrading.mp4" controls></video>
+                    <h3>Colour Grading</h3>
+                </div>
+                <div class="video-card" data-category="short">
+                    <video src="short1.mp4" controls></video>
+                    <h3>Short-Form Video</h3>
+                </div>
+                <div class="video-card" data-category="game">
+                    <video src="game.mp4" controls></video>
+                    <h3>Gaming Edit</h3>
+                </div>
+                <div class="video-card" data-category="ecom">
+                    <video src="ecommerce.mp4" controls></video>
+                    <h3>E-Commerce Ad</h3>
+                </div>
+                <div class="video-card" data-category="anime">
+                    <video src="animie.mp4" controls></video>
+                    <h3>Anime Creation</h3>
+                </div>
+            </div>
+            <p class="empty-state" id="emptyState" hidden>No videos in this category yet — check back soon.</p>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="section contact">
+            <div class="section-head">
+                <p class="eyebrow">Let's Talk</p>
+                <h2>Start Your Project</h2>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your full name">
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="you@example.com">
+                </div>
+                <div class="field">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell us about your project"></textarea>
+                </div>
+                <button type="submit" class="btns">Submit</button>
+                <p class="form-note" id="formNote" hidden>Thanks — your message has been noted.</p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> Editkaro.in — Video Editing &amp; Social Media Marketing.</p>
+    </footer>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // ---- Mobile nav toggle ----
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // ---- Smooth scroll + active nav state ----
+    const navButtons = document.querySelectorAll('.nav-links .b');
+    const sections = Array.from(navButtons)
+        .map(btn => document.getElementById(btn.dataset.target))
+        .filter(Boolean);
+
+    navButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = document.getElementById(btn.dataset.target);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            navLinks.classList.remove('is-open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    const setActiveNav = () => {
+        const scrollPos = window.scrollY + 120;
+        let current = sections[0];
+        sections.forEach(sec => {
+            if (sec.offsetTop <= scrollPos) current = sec;
+        });
+        navButtons.forEach(btn => {
+            btn.classList.toggle('is-active', btn.dataset.target === current?.id);
+        });
+    };
+
+    window.addEventListener('scroll', setActiveNav, { passive: true });
+    setActiveNav();
+
+    // Hero buttons also carry data-target and should scroll too
+    document.querySelectorAll('[data-target]').forEach(el => {
+        if (el.classList.contains('b')) return; // already wired above
+        el.addEventListener('click', () => {
+            const target = document.getElementById(el.dataset.target);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    // ---- Portfolio filtering ----
+    const filterButtons = document.querySelectorAll('.btn-filter');
+    const videoCards = document.querySelectorAll('.video-card');
+    const emptyState = document.getElementById('emptyState');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+
+            const category = btn.dataset.category;
+            let visibleCount = 0;
+
+            videoCards.forEach(card => {
+                const matches = category === 'all' || card.dataset.category === category;
+                card.classList.toggle('is-hidden', !matches);
+                if (matches) visibleCount += 1;
+            });
+
+            emptyState.hidden = visibleCount !== 0;
+        });
+    });
+
+    // ---- Contact form (client-side only) ----
+    const form = document.getElementById('contactForm');
+    const formNote = document.getElementById('formNote');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+        formNote.hidden = false;
+        form.reset();
+    });
+
+    // ---- Footer year ----
+    document.getElementById('year').textContent = new Date().getFullYear();
+});
+
+    </script>
 </body>
 </html>
